@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Alumni\PageController::class, 'index'])
     ->name('homepage');
+
 Route::middleware(['auth'])->group(function () {
     Route::middleware('operator')->name('operator.')->prefix('operator')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Operator\PageController::class, 'index'])

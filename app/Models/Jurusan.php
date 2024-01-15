@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Jurusan extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'role',
+        'nama_jurusan',
     ];
 
-    public function users()
+    public function detail_alumni()
     {
-        return $this->hasMany(User::class, 'id_role', 'id');
+        return $this->hasMany(DetailAlumni::class, 'id_jurusan', 'id');
     }
 }
