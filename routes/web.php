@@ -23,8 +23,10 @@ Route::middleware(['auth'])->group(function () {
         ->name('profile');
     Route::get('profile-edit', [App\Http\Controllers\Alumni\ProfileController::class, 'edit'])
         ->name('profile-edit');
-    Route::put('profile-edit{userID}{detailAlumniID}', [App\Http\Controllers\Alumni\ProfileController::class, 'edit_proses'])
+    Route::put('profile-edit{detailAlumniID}', [App\Http\Controllers\Alumni\ProfileController::class, 'edit_proses'])
         ->name('profile-edit-proses');
+    Route::put('profile-edit{userID}', [App\Http\Controllers\Alumni\ProfileController::class, 'tambah_proses'])
+        ->name('profile-tambah-proses');
 
 
 

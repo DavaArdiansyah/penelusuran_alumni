@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Alumni;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cek_data_alumni;
 use App\Models\Detail_alumni;
 use App\Models\Jurusan;
 use App\Models\User;
@@ -22,16 +23,10 @@ class ProfileController extends Controller
         return view('alumni.editProfile', compact('jurusan'));
     }
 
-    public function edit_proses(Request $request, $userID, $detailAlumniID)
+    public function edit_proses(Request $request, $detailAlumniID)
     {
         // return ($request);
-        $user = User::find($userID);
         $detailAlumni = Detail_alumni::find($detailAlumniID);
-
-        $user->update([
-            'nama' => $request->input('nama'),
-            'no_telp' => $request->input('noTelp'),
-        ]);
 
         $detailAlumni->update([
             'nisn' => $request->input('nisn'),
@@ -56,8 +51,42 @@ class ProfileController extends Controller
             $detailAlumni->foto = $nama_file;
         }
 
-        $user->save();
         $detailAlumni->save();
+
+        return redirect()->route('profile');
+    }
+
+    public function tambah_proses(Request $request, $userID)
+    {
+        // return ($request);
+        $user = User::find($userID);
+
+        $file = $request->file('foto');
+        $nama_file = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'assets/foto';
+        $file->storeAs($tujuan_upload, $nama_file, 'public');
+
+        $user->update([
+            'nama' => $request->input('nama'),
+            'no_telp' => $request->input('noTelp'),
+        ]);
+
+        $cek_data_alumni = Cek_data_alumni::Create([
+            'id_user' => auth()->user()->id,
+            'nisn' => $request->input('nisn'),
+            'tanggal_lahir' => $request->input('tanggalLahir'),
+            'jenis_kelamin' => $request->input('jenisKelamin'),
+            'alamat' => $request->input('alamat'),
+            'id_jurusan' => $request->input('idJurusan'),
+            'tahun_lulus' => $request->input('tahunLulus'),
+            'no_ijazah' => $request->input('noIjazah'),
+            'jenjang_karir' => $request->input('jenjangKarir'),
+            'sosial_media' => $request->input('sosialMedia'),
+            'foto' => $nama_file,
+        ]);
+
+        $user->save();
+        $cek_data_alumni->save();
 
         return redirect()->route('profile');
     }

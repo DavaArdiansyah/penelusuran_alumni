@@ -19,7 +19,7 @@ class Detail_alumniSeeder extends Seeder
             'tanggal_lahir' => "2024-01-15",
             'jenis_kelamin' => 'Laki laki',
             'Alamat' => 'Bandung',
-            'sosial_media' => 'rasyad',
+            'sosial_media' => 'lttlepixiee',
             'id_jurusan' => 1, //foreign
             'tahun_lulus' => "2024",
             'no_ijazah' => '1234567890',

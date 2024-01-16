@@ -7,11 +7,15 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-center mb-5">Data Profile</h4>
-                        <form class="forms-sample" method="POST"
-                            action="{{ route('profile-edit-proses', ['userID' => auth()->user()->id, 'detailAlumniID' => auth()->user()->detail_alumni->id]) }}"
-                            enctype="multipart/form-data">
+                        <form class="forms-sample" method="POST" enctype="multipart/form-data"
+                            action="{{ isset(auth()->user()->detail_alumni)
+                                ? route('profile-edit-proses', [
+                                    'detailAlumniID' => auth()->user()->detail_alumni->id,
+                                ])
+                                : route('profile-tambah-proses', auth()->user()->id) }}">
                             @csrf
                             @method('PUT')
+
                             {{-- <div class="form-group row justify-content-center">
                                 <img src="https://th.bing.com/th?id=OIP.yYUwl3GDU07Q5J5ttyW9fQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
                                     alt="{{ auth()->user()->name }}" class="w-25">
@@ -20,23 +24,24 @@
                                 <label for="InputNisn" class="col-sm-2 col-form-label">Nisn</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="nisn" id="nisn"
-                                        placeholder="Masukan Nisn Anda" value="{{ auth()->user()->detail_alumni->nisn }}">
+                                        placeholder="Masukan Nisn Anda"
+                                        value="{{ isset(auth()->user()->detail_alumni->nisn) ? auth()->user()->detail_alumni->nisn : '' }}">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="InputNama" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="nama" id="nama"
                                         placeholder="Masukan Nama Anda" value="{{ auth()->user()->name }}">
                                 </div>
-                            </div>
-                            <div class="form-group row">
+                            </div> --}}
+                            {{-- <div class="form-group row">
                                 <label for="InputNoTelp" class="col-sm-2 col-form-label">No Telepon</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="noTelp" id="noTelp"
                                         placeholder="Masukan No Telepon Anda" value="{{ auth()->user()->no_telp }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group row">
                                 <label for="InputTanggalLahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                 <div class="col-sm-9">
@@ -51,11 +56,11 @@
                                     <select name="jenisKelamin" id="jenisKelamin" class="form-control">
                                         <option disabled hidden selected>Jenis Kelamin</option>
                                         <option value="Laki laki"
-                                            {{ auth()->user()->detail_alumni->jenis_kelamin == 'Laki laki' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) == 'Laki laki' ? 'selected' : '' }}>
                                             Laki laki
                                         </option>
                                         <option value="Perempuan"
-                                            {{ auth()->user()->detail_alumni->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}>
                                             Perempuan
                                         </option>
                                     </select>
@@ -111,39 +116,36 @@
                                     Karir</label>
                                 <div class="col-sm-9">
                                     <select name="jenjangKarir" id="jenjangKarir" class="form-control">
-                                        <option disabled hidden selected>Jenis Kelamin</option>
+                                        <option disabled hidden selected>Jenjang Karir</option>
                                         <option value="Bekerja"
-                                            {{ auth()->user()->detail_alumni->jenjang_karir == 'Bekerja' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Bekerja' ? 'selected' : '' }}>
                                             Bekerja
                                         </option>
                                         <option value="Kuliah"
-                                            {{ auth()->user()->detail_alumni->jenjang_karir == 'Kuliah' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Kuliah' ? 'selected' : '' }}>
                                             Kuliah
                                         </option>
                                         <option value="Wirausaha"
-                                            {{ auth()->user()->detail_alumni->jenjang_karir == 'Wirausaha' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Wirausaha' ? 'selected' : '' }}>
                                             Wirausaha
                                         </option>
                                         <option value="Belum Bekerja"
-                                            {{ auth()->user()->detail_alumni->jenjang_karir == 'Belum Bekerja' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Belum Bekerja' ? 'selected' : '' }}>
                                             Belum Bekerja
                                         </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="foot">Foto:</label>
+                                <label for="foto">Foto:</label>
                                 <input type="file" name="foto" id="foto" class="form-control">
-                                @if (!isset(auth()->user()->detail_alumni->jenjang_karir))
-                                    <label>Anda belum menambahkan untuk kolom ini</label><br>
-                                @else
+                                @if (isset(auth()->user()->detail_alumni))
                                     <label>File Sebelumnya:</label><br>
                                     <img src="{{ asset('storage/assets/foto/' . (isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : 'Anda belum menambahkan untuk kolom ini')) }}"
                                         alt="foto" width="150">
                                     <input type="hidden" name="namaFileLama"
                                         value="{{ isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : '' }}">
                                 @endif
-                                {{-- {{ isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : '' }} --}}
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Simpan Perubahan</button>
                         </form>
