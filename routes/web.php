@@ -19,6 +19,15 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\Alumni\PageController::class, 'index'])
     ->name('homepage');
 Route::middleware(['auth'])->group(function () {
+    Route::get('profile', [App\Http\Controllers\Alumni\ProfileController::class, 'index'])
+        ->name('profile');
+    Route::get('profile-edit', [App\Http\Controllers\Alumni\ProfileController::class, 'edit'])
+        ->name('profile-edit');
+    Route::put('profile-edit{userID}{detailAlumniID}', [App\Http\Controllers\Alumni\ProfileController::class, 'edit_proses'])
+        ->name('profile-edit-proses');
+
+
+
     Route::middleware('operator')->name('operator.')->prefix('operator')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Operator\PageController::class, 'index'])
             ->name('dashboard');
