@@ -8,11 +8,7 @@
                     <div class="card-body">
                         <h4 class="card-title text-center mb-5">Data Profile</h4>
                         <form class="forms-sample" method="POST" enctype="multipart/form-data"
-                            action="{{ isset(auth()->user()->detail_alumni)
-                                ? route('profile-edit-proses', [
-                                    'detailAlumniID' => auth()->user()->detail_alumni->id,
-                                ])
-                                : route('profile-tambah-proses', auth()->user()->id) }}">
+                            action="{{ route('profile-edit-proses', auth()->user()->id) }}">
                             @csrf
                             @method('PUT')
 

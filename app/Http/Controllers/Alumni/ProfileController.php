@@ -23,40 +23,41 @@ class ProfileController extends Controller
         return view('alumni.editProfile', compact('jurusan'));
     }
 
-    public function edit_proses(Request $request, $detailAlumniID)
-    {
-        // return ($request);
-        $detailAlumni = Detail_alumni::find($detailAlumniID);
+    // public function edit_proses(Request $request, $detailAlumniID)
+    // // {
+    // //     // return ($request);
+    // //     $detailAlumni = Detail_alumni::find($detailAlumniID);
 
-        $detailAlumni->update([
-            'nisn' => $request->input('nisn'),
-            'tanggal_lahir' => $request->input('tanggalLahir'),
-            'jenis_kelamin' => $request->input('jenisKelamin'),
-            'alamat' => $request->input('alamat'),
-            'id_jurusan' => $request->input('idJurusan'),
-            'tahun_lulus' => $request->input('tahunLulus'),
-            'no_ijazah' => $request->input('noIjazah'),
-            'jenjang_karir' => $request->input('jenjangKarir'),
-            'sosial_media' => $request->input('sosialMedia'),
-        ]);
+    // //     $detailAlumni->update([
+    // //         'nisn' => $request->input('nisn'),
+    // //         'tanggal_lahir' => $request->input('tanggalLahir'),
+    // //         'jenis_kelamin' => $request->input('jenisKelamin'),
+    // //         'alamat' => $request->input('alamat'),
+    // //         'id_jurusan' => $request->input('idJurusan'),
+    // //         'tahun_lulus' => $request->input('tahunLulus'),
+    // //         'no_ijazah' => $request->input('noIjazah'),
+    // //         'jenjang_karir' => $request->input('jenjangKarir'),
+    // //         'sosial_media' => $request->input('sosialMedia'),
+    // //     ]);
 
-        $detailAlumni->foto = $request->hasFile('foto') ? time() . "_" . $request->file('foto')->getClientOriginalName() : $detailAlumni->foto;
+    // //     $detailAlumni->foto = $request->hasFile('foto') ? time() . "_" . $request->file('foto')->getClientOriginalName() : $detailAlumni->foto;
 
-        if ($request->hasFile('foto') && $detailAlumni->foto) {
-            Storage::disk('public')->delete('assets/foto/' . $detailAlumni->foto);
+    // //     if ($request->hasFile('foto') && $detailAlumni->foto) {
+    // //         Storage::disk('public')->delete('assets/foto/' . $detailAlumni->foto);
 
-            $file = $request->file('foto');
-            $nama_file = time() . "_" . $file->getClientOriginalName();
-            $file->storeAs('assets/foto', $nama_file, 'public');
-            $detailAlumni->foto = $nama_file;
-        }
+    // //         $file = $request->file('foto');
+    // //         $nama_file = time() . "_" . $file->getClientOriginalName();
+    // //         $file->storeAs('assets/foto', $nama_file, 'public');
+    // //         $detailAlumni->foto = $nama_file;
+    // //     }
 
-        $detailAlumni->save();
+    // //     $detailAlumni->save();
 
-        return redirect()->route('profile');
-    }
+    // //     return redirect()->route('profile');
+    // // }
+    // {}
 
-    public function tambah_proses(Request $request, $userID)
+    public function edit_proses(Request $request, $userID)
     {
         // return ($request);
         $user = User::find($userID);
@@ -65,11 +66,6 @@ class ProfileController extends Controller
         $nama_file = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = 'assets/foto';
         $file->storeAs($tujuan_upload, $nama_file, 'public');
-
-        $user->update([
-            'nama' => $request->input('nama'),
-            'no_telp' => $request->input('noTelp'),
-        ]);
 
         $cek_data_alumni = Cek_data_alumni::Create([
             'id_user' => auth()->user()->id,
