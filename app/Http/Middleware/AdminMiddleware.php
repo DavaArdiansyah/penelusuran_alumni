@@ -19,6 +19,6 @@ class AdminMiddleware
         if (Auth::user() && Auth::user()->id_role == 3) {
             return $next($request);
         }
-        return redirect('Admin.dashboard');
+        return redirect('/');
     }
 }

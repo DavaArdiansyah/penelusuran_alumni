@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailAlumni extends Model
+class Detail_alumni extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class DetailAlumni extends Model
         'alamat',
         'media_sosial',
         'id_jurusan',
-        'id_tahun_lulus',
+        'tahun_lulus',
         'no_ijazah',
         'id_jenjang_karir',
     ];
@@ -25,13 +25,9 @@ class DetailAlumni extends Model
     {
         return $this->belongsTo(Jurusan::class, 'id_jurusan','id');
     }
-    public function tahun_lulus()
-    {
-        return $this->belongsTo(TahunLulus::class, 'id_tahun_lulus','id');
-    }
     public function jenjang_karir()
     {
-        return $this->belongsTo(JenjangKarir::class, 'id_jenjang_karir','id');
+        return $this->belongsTo(Jenjang_karir::class, 'id_jenjang_karir','id');
     }
     public function users()
     {

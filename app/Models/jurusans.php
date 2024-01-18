@@ -15,6 +15,6 @@ class Jurusan extends Model
 
     public function detail_alumni()
     {
-        return $this->hasMany(DetailAlumni::class, 'id_jurusan', 'id');
+        return $this->hasMany(Detail_alumni::class, 'id_jurusan', 'id');
     }
 }

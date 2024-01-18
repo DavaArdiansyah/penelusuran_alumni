@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string('password');
             $table->string('no_telp');
             $table->unsignedBigInteger('id_role')->default(1);
-            $table->foreign('id_role')->references('id')->on('role');
             $table->rememberToken();
             $table->timestamps();
+
+            
+            $table->foreign('id_role')->references('id')->on('roles');
         });
     }
 

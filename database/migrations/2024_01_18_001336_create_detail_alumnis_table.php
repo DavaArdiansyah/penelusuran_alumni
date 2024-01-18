@@ -11,21 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detail_alumni', function (Blueprint $table) {
-            $table->id('nisn');
+        Schema::create('detail_alumnis', function (Blueprint $table) {
+            $table->id();
+            $table->integer('nisn');
             $table->unsignedBigInteger('id_users');
-            $table->foreign('id_users')->references('id')->on('users');
             $table->enum('jenis_kelamin',['Laki - Laki','Perempuan']); 
-            $table->string('alamat');
+            $table->text('alamat');
             $table->string('media_sosial');
             $table->unsignedBigInteger('id_jurusan');
-            $table->foreign('id_jurusan')->references('id')->on('jurusan');
-            $table->unsignedBigInteger('id_tahun_lulus');
-            $table->foreign('id_tahun_lulus')->references('id')->on('tahun_lulus');
-            $table->string('no_ijazah');
+            $table->integer('tahun_lulus');
+            $table->integer('no_ijazah');
             $table->unsignedBigInteger('id_jenjang_karir');
-            $table->foreign('id_jenjang_karir')->references('id')->on('jenjang_karir');
+            $table->enum('status',['Belum diverifikasi', 'Diverifikasi']);
             $table->timestamps();
+            
+            
+            $table->foreign('id_users')->references('id')->on('users');
+            $table->foreign('id_jurusan')->references('id')->on('jurusans');
+            $table->foreign('id_jenjang_karir')->references('id')->on('jenjang_karirs');
         });
     }
 
@@ -34,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_alumni');
+        Schema::dropIfExists('detail_alumnis');
     }
 };

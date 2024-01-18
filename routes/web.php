@@ -28,6 +28,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware('admin')->name('admin.')->prefix('admin')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Admin\PageController::class, 'index'])
-            ->name('dashboard');
+            ->name('Admin.dashboard');
     });
 });
