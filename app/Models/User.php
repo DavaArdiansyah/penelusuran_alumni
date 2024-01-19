@@ -48,4 +48,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'id_role', 'id');
     }
+    public function detail_alumni()
+    {
+        return $this->hasMany(DetailAlumni::class, 'id_users', 'id');
+    }
+    public function detail_users()
+    {
+        return $this->hasMany(DetailUsers::class, 'id_users', 'id');
+    }
 }
