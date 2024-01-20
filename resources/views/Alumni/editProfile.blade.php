@@ -52,11 +52,11 @@
                                     <select name="jenisKelamin" id="jenisKelamin" class="form-control">
                                         <option disabled hidden selected>Jenis Kelamin</option>
                                         <option value="Laki laki"
-                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) == 'Laki laki' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) ? (auth()->user()->detail_alumni->jenis_kelamin == 'Laki laki' ? 'selected' : '') : '' }}>
                                             Laki laki
                                         </option>
                                         <option value="Perempuan"
-                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) ? (auth()->user()->detail_alumni->jenis_kelamin == 'Perempuan' ? 'selected' : '') : '' }}>
                                             Perempuan
                                         </option>
                                     </select>
@@ -111,24 +111,15 @@
                                 <label for="InputJenjangKarir" class="col-sm-2 col-form-label">Jenjang
                                     Karir</label>
                                 <div class="col-sm-9">
-                                    <select name="jenjangKarir" id="jenjangKarir" class="form-control">
-                                        <option disabled hidden selected>Jenjang Karir</option>
-                                        <option value="Bekerja"
-                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Bekerja' ? 'selected' : '' }}>
-                                            Bekerja
+                                    <select name="idJenjangKarir" id="idJenjangKarir" class="form-control">
+                                        <option disabled hidden selected>
+                                            {{ !isset(auth()->user()->detail_alumni->id_jenjang_karir) ? 'Jurusan' : '' }}
                                         </option>
-                                        <option value="Kuliah"
-                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Kuliah' ? 'selected' : '' }}>
-                                            Kuliah
-                                        </option>
-                                        <option value="Wirausaha"
-                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Wirausaha' ? 'selected' : '' }}>
-                                            Wirausaha
-                                        </option>
-                                        <option value="Belum Bekerja"
-                                            {{ isset(auth()->user()->detail_alumni->jenjang_karir) == 'Belum Bekerja' ? 'selected' : '' }}>
-                                            Belum Bekerja
-                                        </option>
+                                        @foreach ($jenjang_karir as $jnjgkr)
+                                            <option value="{{ $jnjgkr->id }}"
+                                                {{ isset(auth()->user()->detail_alumni->id_jenjang_karir) && $jnjgkr->id == auth()->user()->detail_alumni->id_jenjang_karir ? 'selected' : '' }}>
+                                                {{ $jnjgkr->jenjang_karir }} </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -139,7 +130,7 @@
                                     <label>File Sebelumnya:</label><br>
                                     <img src="{{ asset('storage/assets/foto/' . (isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : 'Anda belum menambahkan untuk kolom ini')) }}"
                                         alt="foto" width="150">
-                                    <input type="hidden" name="namaFileLama"
+                                    <input type="hidden" name="namaFileLama" id="namaFileLama"
                                         value="{{ isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : '' }}">
                                 @endif
                             </div>

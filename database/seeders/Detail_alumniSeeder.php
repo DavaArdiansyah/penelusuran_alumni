@@ -23,8 +23,9 @@ class Detail_alumniSeeder extends Seeder
             'id_jurusan' => 1, //foreign
             'tahun_lulus' => "2024",
             'no_ijazah' => '1234567890',
-            'foto' => 'foto',
-            'jenjang_karir' => 'Bekerja'
+            'foto' => '1705335479_Screenshot 2024-01-08 150436.png',
+            'id_jenjang_karir' => 1,
+            'status' => 'Diverifikasi',
         ]);
     }
 }

@@ -20,7 +20,7 @@ class Detail_alumni extends Model
         'tahun_lulus',
         'no_ijazah',
         'foto',
-        'jenjang_karir'
+        'id_jenjang_karir'
     ];
 
     public function user()
@@ -31,5 +31,10 @@ class Detail_alumni extends Model
     public function jurusan()
     {
         return $this->belongsTo(Jurusan::class, 'id_jurusan', 'id');
+    }
+
+    public function jenjang_karir()
+    {
+        return $this->belongsTo(Jenjang_karir::class, 'id_jenjang_karir', 'id');
     }
 }

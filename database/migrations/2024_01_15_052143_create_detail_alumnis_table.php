@@ -13,22 +13,24 @@ return new class extends Migration
     {
         Schema::create('detail_alumnis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nisn')->unique();
+            $table->bigInteger('nisn');
             $table->unsignedBigInteger('id_user');
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['Laki laki', 'Perempuan']);
             $table->text('alamat');
-            $table->string('sosial_media');
             $table->unsignedBigInteger('id_jurusan');
             $table->integer('tahun_lulus');
-            $table->bigInteger('no_ijazah')->unique();
+            $table->bigInteger('no_ijazah');
+            $table->unsignedBigInteger('id_jenjang_karir');
+            $table->string('sosial_media');
             $table->string('foto');
-            $table->enum('jenjang_karir', ['Bekerja', 'Kuliah', 'Belum bekerja', 'Wirausaha']);
+            $table->enum('status', ['Belum diverifikasi', 'Diverifikasi']);
             $table->timestamps();
 
 
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_jurusan')->references('id')->on('jurusans');
+            $table->foreign('id_jenjang_karir')->references('id')->on('jenjang_karirs');
         });
     }
 
