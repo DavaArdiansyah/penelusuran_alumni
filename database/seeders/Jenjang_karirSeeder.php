@@ -14,16 +14,16 @@ class Jenjang_karirSeeder extends Seeder
     public function run(): void
     {
         Jenjang_karir::create([
-            'jenjang_karir' => 'Bekerja',
+            "jenjang_karir" => "Bekerja",
         ]);
         Jenjang_karir::create([
-            'jenjang_karir' => 'Kuliah',
+            "jenjang_karir" => "Kuliah",
         ]);
         Jenjang_karir::create([
-            'jenjang_karir' => 'Wirausaha',
+            "jenjang_karir" => "Wirausaha",
         ]);
         Jenjang_karir::create([
-            'jenjang_karir' => 'Belum Bekerja',
+            "jenjang_karir" => "Belum Bekerja",
         ]);
     }
 }
