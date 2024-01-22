@@ -16,7 +16,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user() && Auth::user()->id_role == 3) {
+        // if(auth()->user()->role == 'Admin'){
+        //     return $next($request);
+        // }
+        // return response()->json(['You do not have access for this page']);
+        if (Auth::user()->id_role == 3) {
             return $next($request);
         }
         return redirect('/');
