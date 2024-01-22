@@ -11,26 +11,30 @@ class Detail_alumni extends Model
 
     protected $fillable = [
         'nisn',
-        'id_users',
+        'id_user', //one to one
+        'tanggal_lahir',
         'jenis_kelamin',
         'alamat',
-        'media_sosial',
-        'id_jurusan',
+        'sosial_media',
+        'id_jurusan', //one to many
         'tahun_lulus',
         'no_ijazah',
-        'id_jenjang_karir',
+        'foto',
+        'id_jenjang_karir'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 
     public function jurusan()
     {
-        return $this->belongsTo(Jurusan::class, 'id_jurusan','id');
+        return $this->belongsTo(Jurusan::class, 'id_jurusan', 'id');
     }
+
     public function jenjang_karir()
     {
-        return $this->belongsTo(Jenjang_karir::class, 'id_jenjang_karir','id');
-    }
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'id_users','id');
+        return $this->belongsTo(Jenjang_karir::class, 'id_jenjang_karir', 'id');
     }
 }

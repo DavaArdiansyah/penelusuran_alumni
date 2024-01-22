@@ -1,0 +1,60 @@
+[
+    {
+        "nisn" : {
+            "input->value" : "{{ isset(auth()->user()->detail_alumni->nisn) ? auth()->user()->detail_alumni->nisn : '' }}"
+        }
+    },
+    {
+        "tanggalLahir" : {
+            "input->value" : "{{ isset(auth()->user()->detail_alumni->tanggal_lahir) ? auth()->user()->detail_alumni->tanggal_lahir : '' }}"
+        }
+    },
+    {
+        "jenisKelamin" : [{
+            "option1" : "<option disabled hidden selected>Jenis Kelamin</option>",
+            "option2" : "<option value='Laki laki' {{ isset(auth()->user()->detail_alumni->jenis_kelamin) ? (auth()->user()->detail_alumni->jenis_kelamin == 'Laki laki' ? 'selected' : '') : '' }}>Laki laki</option>",
+            "option3" : "<option value='Perempuan'{{ isset(auth()->user()->detail_alumni->jenis_kelamin) ? (auth()->user()->detail_alumni->jenis_kelamin == 'Perempuan' ? 'selected' : '') : '' }}>Perempuan</option>"
+        }]
+    },
+    {
+        "alamat" : {
+            "<textarea>" : "{{ isset(auth()->user()->detail_alumni->alamat) ? auth()->user()->detail_alumni->alamat : '' }}"
+        }
+    },
+    {
+        "sosialMedia" : {
+            "input->value" : "{{ isset(auth()->user()->detail_alumni->sosial_media) ? auth()->user()->detail_alumni->sosial_media : '' }}" 
+        }
+    },
+    {
+        "jurusan" : {
+            "option sebelum foreach" : "<option disabled hidden selected>{{ !isset(auth()->user()->detail_alumni->id_jurusan) ? 'Jurusan' : '' }}</option>",
+            "foreach" : "@foreach ($jurusan as $jrsn)<option value='{{ $jrsn->id }}'{{ isset(auth()->user()->detail_alumni->id_jurusan) && $jrsn->id == auth()->user()->detail_alumni->id_jurusan ? 'selected' : '' }}>{{ $jrsn->jurusan }} </option>@endforeach"
+        }
+    },
+    {
+        "tahunLulus" : {
+            "input->value" : "{{ isset(auth()->user()->detail_alumni->tahun_lulus) ? auth()->user()->detail_alumni->tahun_lulus : '' }}"
+        }
+    },
+    {
+        "noIjazah" : {
+            "input->value" : "{{ isset(auth()->user()->detail_alumni->no_ijazah) ? auth()->user()->detail_alumni->no_ijazah : '' }}"
+        }
+    },
+    {
+        "jenjangkarir" : {
+            "option sebelum foreach" : "<option disabled hidden selected>{{ !isset(auth()->user()->detail_alumni->id_jenjang_karir) ? 'Jurusan' : '' }}</option>",
+            "foreach" : " @foreach ($jenjang_karir as $jnjgkr)<option value='{{ $jnjgkr->id }}'{{ isset(auth()->user()->detail_alumni->id_jenjang_karir) && $jnjgkr->id == auth()->user()->detail_alumni->id_jenjang_karir ? 'selected' : '' }}>{{ $jnjgkr->jenjang_karir }} </option>@endforeach"
+        }
+    },
+    {
+        "foto" : {
+            "input->file->name" : "foto",
+            "if" : "isset(auth()->user()->detail_alumni)",
+            "img->src" : "{{ asset('storage/assets/foto/' . (isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : 'Anda belum menambahkan untuk kolom ini')) }}",
+            "input->hidden->name" : "namaFileLama",
+            "input->hidden->value" : "{{ isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : '' }}"
+        }
+    }
+]
