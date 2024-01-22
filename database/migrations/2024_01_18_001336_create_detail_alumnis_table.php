@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('tahun_lulus');
             $table->integer('no_ijazah');
             $table->unsignedBigInteger('id_jenjang_karir');
+            $table->string('foto');
             $table->enum('status', ['Belum diverifikasi', 'Diverifikasi']);
             $table->timestamps();
 
