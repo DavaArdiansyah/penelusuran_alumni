@@ -15,17 +15,18 @@ return new class extends Migration
             $table->id();
             $table->integer('nisn');
             $table->unsignedBigInteger('id_users');
-            $table->enum('jenis_kelamin',['Laki - Laki','Perempuan']); 
+            $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan']);
+            $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->string('media_sosial');
             $table->unsignedBigInteger('id_jurusan');
             $table->integer('tahun_lulus');
             $table->integer('no_ijazah');
             $table->unsignedBigInteger('id_jenjang_karir');
-            $table->enum('status',['Belum diverifikasi', 'Diverifikasi']);
+            $table->enum('status', ['Belum diverifikasi', 'Diverifikasi']);
             $table->timestamps();
-            
-            
+
+
             $table->foreign('id_users')->references('id')->on('users');
             $table->foreign('id_jurusan')->references('id')->on('jurusans');
             $table->foreign('id_jenjang_karir')->references('id')->on('jenjang_karirs');
