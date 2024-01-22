@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             'email' => 'rasyad@mail.com',
             'password' => Hash::make('12345678'),
             'no_telp' => '081234567810',
-            'id_role' => 1
+            'id_role' => 4
         ]);
     }
 }
