@@ -11,11 +11,6 @@
                             action="{{ route('profile-edit-proses', auth()->user()->id) }}">
                             @csrf
                             @method('PUT')
-
-                            {{-- <div class="form-group row justify-content-center">
-                                <img src="https://th.bing.com/th?id=OIP.yYUwl3GDU07Q5J5ttyW9fQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
-                                    alt="{{ auth()->user()->name }}" class="w-25">
-                            </div> --}}
                             <div class="form-group row">
                                 <label for="InputNisn" class="col-sm-2 col-form-label">Nisn</label>
                                 <div class="col-sm-9">
@@ -24,20 +19,6 @@
                                         value="{{ isset(auth()->user()->detail_alumni->nisn) ? auth()->user()->detail_alumni->nisn : '' }}">
                                 </div>
                             </div>
-                            {{-- <div class="form-group row">
-                                <label for="InputNama" class="col-sm-2 col-form-label">Nama</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="nama" id="nama"
-                                        placeholder="Masukan Nama Anda" value="{{ auth()->user()->name }}">
-                                </div>
-                            </div> --}}
-                            {{-- <div class="form-group row">
-                                <label for="InputNoTelp" class="col-sm-2 col-form-label">No Telepon</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="noTelp" id="noTelp"
-                                        placeholder="Masukan No Telepon Anda" value="{{ auth()->user()->no_telp }}">
-                                </div>
-                            </div> --}}
                             <div class="form-group row">
                                 <label for="InputTanggalLahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                 <div class="col-sm-9">

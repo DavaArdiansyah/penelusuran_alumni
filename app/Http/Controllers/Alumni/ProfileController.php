@@ -20,14 +20,13 @@ class ProfileController extends Controller
 
     public function edit()
     {
-        if (auth()->user()->detail_alumni->status == 'Diverifikasi') {
+        if (auth()->user()->detail_alumni && auth()->user()->detail_alumni->status == 'Belum diverifikasi') {
 
-            $jurusan = Jurusan::all();
-            $jenjang_karir = Jenjang_karir::all();
-            return view('alumni.editProfile', compact('jurusan', 'jenjang_karir'));
-        } else {
             return redirect()->route('profile')->with('nanti pesan error');
         }
+        $jurusan = Jurusan::all();
+        $jenjang_karir = Jenjang_karir::all();
+        return view('alumni.editProfile', compact('jurusan', 'jenjang_karir'));
     }
 
     public function edit_proses(Request $request)

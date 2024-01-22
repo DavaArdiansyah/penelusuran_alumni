@@ -1,0 +1,58 @@
+[
+{
+    "img profile" : {
+        "src" : "{{ isset(auth()->user()->detail_alumni->foto) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? asset('storage/assets/foto/' . auth()->user()->detail_alumni->foto) : '' }}",
+        "alt" : "{{ auth()->user()->name }}"
+    }
+},
+{
+    "nisn" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->nisn) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->nisn : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "name" : {
+    "label" : "{{ auth()->user()->name }}"
+}},
+{
+    "noTelp" : {
+    "label" : "{{ auth()->user()->no_telp }}"
+}},
+{
+    "tanggalLahir" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->tanggal_lahir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tanggal_lahir : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "jenisKelamin" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->jenis_kelamin) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jenis_kelamin : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "alamat" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->alamat) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->alamat : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "sosialMedia" : {
+    "if" : "isset(auth()->user()->detail_alumni->sosial_media) && auth()->user()->detail_alumni->status == 'Diverifikasi'",
+    "<a>" : "<a href='https://www.instagram.com/{{ isset(auth()->user()->detail_alumni->sosial_media) ? auth()->user()->detail_alumni->sosial_media : '' }}'>{{ auth()->user()->detail_alumni->sosial_media }}</a>",
+    "else->label" : "Anda belum menambahkan untuk kolom ini"
+}},
+{
+    "jurusan" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->jurusan->jurusan) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jurusan->jurusan : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "tahunLulus" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->tahun_lulus) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tahun_lulus : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "noIjazah" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->no_ijazah) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->no_ijazah : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "jenjanKarir" : {
+    "label" : "{{ isset(auth()->user()->detail_alumni->jenjang_karir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jenjang_karir : 'Anda belum menambahkan untuk kolom ini' }}"
+}},
+{
+    "button berupa tag <a>" : {
+    "<a> edit biodata" : "{{ route('profile-edit') }}"
+}}
+]
