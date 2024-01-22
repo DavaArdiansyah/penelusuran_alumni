@@ -28,7 +28,6 @@ Route::middleware(['auth'])->group(function () {
         ->name('profile-edit-proses');
 
 
-
     Route::middleware('operator')->name('Operator.')->prefix('operator')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Operator\PageController::class, 'index'])
             ->name('dashboard');
