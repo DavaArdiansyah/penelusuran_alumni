@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Alumni\PageController::class, 'index'])
     ->name('homepage');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('profile', [App\Http\Controllers\Alumni\ProfileController::class, 'index'])
         ->name('profile');
@@ -34,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    Route::middleware('admin')->name('admin.')->prefix('admin')->group(function () {
+    Route::middleware('admin')->name('Admin.')->prefix('admin')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Admin\PageController::class, 'index'])
             ->name('dashboard');
     });
