@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('detail_alumnis', function (Blueprint $table) {
             $table->id();
             $table->integer('nisn');
-            $table->unsignedBigInteger('id_users');
-            $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan']);
+            $table->unsignedBigInteger('id_user');
+            $table->enum('jenis_kelamin', ['Laki Laki', 'Perempuan']);
             $table->date('tanggal_lahir');
             $table->text('alamat');
-            $table->string('media_sosial');
+            $table->string('sosial_media');
             $table->unsignedBigInteger('id_jurusan');
             $table->integer('tahun_lulus');
             $table->integer('no_ijazah');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->foreign('id_users')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_jurusan')->references('id')->on('jurusans');
             $table->foreign('id_jenjang_karir')->references('id')->on('jenjang_karirs');
         });
