@@ -1,8 +1,7 @@
 @extends('layouts.AdminMain')
-
 @section('content')
 <div class="card-box mb-30">
-    <h2 class="h4 pd-20">Dashboard Admin</h2>
+    <h2 class="h4 pd-20">Dashboard Operator</h2>
     <table class="data-table table nowrap">
         <thead>
             <tr>
