@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::middleware('operator')->name('operator.')->prefix('operator')->group(function () {
+    Route::middleware('operator')->name('Operator.')->prefix('operator')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Operator\PageController::class, 'index'])
             ->name('dashboard');
     });
@@ -40,3 +40,7 @@ Route::middleware(['auth'])->group(function () {
             ->name('dashboard');
     });
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
