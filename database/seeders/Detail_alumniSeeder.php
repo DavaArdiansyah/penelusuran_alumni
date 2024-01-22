@@ -15,7 +15,7 @@ class Detail_alumniSeeder extends Seeder
     {
         Detail_alumni::create([
             'nisn' => '1234567890',
-            'id_user' => 3, //foreign 
+            'id_user' => 3, //foreign
             'tanggal_lahir' => "2024-01-15",
             'jenis_kelamin' => 'Laki laki',
             'Alamat' => 'Bandung',
