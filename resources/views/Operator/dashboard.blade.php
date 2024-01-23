@@ -1,156 +1,83 @@
 @extends('layouts.main')
+
 @section('content')
-    <div class="card-box mb-30">
-        <h2 class="h4 pd-20">Dashboard Operator</h2>
-        <table class="data-table table nowrap">
-            <thead>
-                <tr>
-                    <th class="table-plus datatable-nosort">Product</th>
-                    <th>Name</th>
-                    <th>Color</th>
-                    <th>Size</th>
-                    <th>Price</th>
-                    <th>Oty</th>
-                    <th class="datatable-nosort">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-plus">
-                        <img src="{{ asset('assets/admin') }}/vendors/images/product-1.jpg" width="70" height="70"
-                            alt="">
-                    </td>
-                    <td>
-                        <h5 class="font-16">Shirt</h5>
-                        by John Doe
-                    </td>
-                    <td>Black</td>
-                    <td>M</td>
-                    <td>$1000</td>
-                    <td>1</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
-                                role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-plus">
-                        <img src="{{ asset('assets/admin') }}/vendors/images/product-2.jpg" width="70" height="70"
-                            alt="">
-                    </td>
-                    <td>
-                        <h5 class="font-16">Boots</h5>
-                        by Lea R. Frith
-                    </td>
-                    <td>brown</td>
-                    <td>9UK</td>
-                    <td>$900</td>
-                    <td>1</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
-                                role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-plus">
-                        <img src="{{ asset('assets/admin') }}/vendors/images/product-3.jpg" width="70" height="70"
-                            alt="">
-                    </td>
-                    <td>
-                        <h5 class="font-16">Hat</h5>
-                        by Erik L. Richards
-                    </td>
-                    <td>Orange</td>
-                    <td>M</td>
-                    <td>$100</td>
-                    <td>4</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
-                                role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-plus">
-                        <img src="{{ asset('assets/admin') }}/vendors/images/product-4.jpg" width="70" height="70"
-                            alt="">
-                    </td>
-                    <td>
-                        <h5 class="font-16">Long Dress</h5>
-                        by Renee I. Hansen
-                    </td>
-                    <td>Gray</td>
-                    <td>L</td>
-                    <td>$1000</td>
-                    <td>1</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
-                                role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-plus">
-                        <img src="{{ asset('assets/admin') }}/vendors/images/product-5.jpg" width="70" height="70"
-                            alt="">
-                    </td>
-                    <td>
-                        <h5 class="font-16">Blazer</h5>
-                        by Vicki M. Coleman
-                    </td>
-                    <td>Blue</td>
-                    <td>M</td>
-                    <td>$1000</td>
-                    <td>1</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
-                                role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h4>Data Alumni SMKN 11 Bandung</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Alumni</li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+        <!-- Simple Datatable start -->
+        <div class="card-box mb-30">
+            <div class="pd-20">
+                <h4 class="text-blue h4">Alumni</h4>
+                <p class="mb-0">JIka data tidak muncul gunakan fitur pencarian</a></p>
+            </div>
+            <div class="pb-20">
+                <table class="data-table table stripe hover nowrap">
+                    <thead>
+                        <tr>
+                            <th class="table-plus datatable-nosort">Nama</th>
+                            <th>TH Lulus</th>
+                            <th>Jurusan</th>
+                            <th>Sosial Media</th>
+                            <th class="datatable-nosort">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $dt)
+                            <td>{{ $dt->user->name }}</td>
+                            <td>{{ $dt->tahun_lulus }}</td>
+                            <td>{{ $dt->jurusan->jurusan }}</td>
+                            <td><a href="https://www.instagram.com/{{ $dt->sosial_media }}">{{ $dt->sosial_media }}</a></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                         role="button" data-toggle="dropdown">
+                                        <i class="dw dw-more"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                        <button class="dropdown-item"><i class=""></i>
+                                            Terima</button>
+                                        <button class="dropdown-item"><i class="background color: #dc3545"></i>
+                                            Tolak</button>
+                                    </div>
+                                </div>
+                            </td>
+                            
+                        @endforeach
+                        {{-- <tr>
+                            <td class="table-plus">Gloria F. Mead</td>
+                            <td>25</td>
+                            <td>Sagittarius</td>
+                            <td>2829 Trainer Avenue Peoria, IL 61602 </td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                        href="#" role="button" data-toggle="dropdown">
+                                        <i class="dw dw-more"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                        <a class="dropdown-item" href="#"><i class="dw dw-eye"></i>
+                                            Lihat Detail</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr> --}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
