@@ -11,6 +11,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('alumni.dashboard');
+        $data = Detail_alumni::all();
+        return view('alumni.dashboard', compact('data'));
     }
 }

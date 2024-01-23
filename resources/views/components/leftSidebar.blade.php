@@ -1,8 +1,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
-            <img src="{{asset('assets/admin')}}/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-            <img src="{{asset('assets/admin')}}/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+            <img src="{{ asset('assets/admin') }}/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+            <img src="{{ asset('assets/admin') }}/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -188,9 +188,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
+                    <a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank"
+                        class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-paper-plane1"></span>
-                        <span class="mtext">Landing Page <img src="{{asset('assets/admin')}}/vendors/images/coming-soon.png" alt="" width="25"></span>
+                        <span class="mtext">Landing Page <img
+                                src="{{ asset('assets/admin') }}/vendors/images/coming-soon.png" alt=""
+                                width="25"></span>
                     </a>
                 </li>
             </ul>
