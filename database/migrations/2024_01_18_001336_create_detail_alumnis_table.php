@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('foto');
             $table->enum('status', ['Belum diverifikasi', 'Diverifikasi']);
             $table->timestamps();
+            $table->softDeletes();
 
 
             $table->foreign('id_user')->references('id')->on('users');

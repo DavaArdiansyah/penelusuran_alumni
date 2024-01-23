@@ -37,5 +37,13 @@ class UserSeeder extends Seeder
             'no_telp' => '081234567810',
             'id_role' => 4
         ]);
+
+        User::create([
+            'name' => 'Muhammad Afdhal',
+            'email' => 'afdhal@mail.com',
+            'password' => Hash::make('12345678'),
+            'no_telp' => '081234567810',
+            'id_role' => 4
+        ]);
     }
 }

@@ -23,7 +23,7 @@
             </div>
         @endif
         @if (auth()->user())
-            @include('components.header.infoNonUser')
+            @include('components.header.infoLogin')
         @endif
         <div class="github-link">
             <a href="https://github.com/dropways/deskapp" target="_blank"><img src="vendors/images/github.svg"

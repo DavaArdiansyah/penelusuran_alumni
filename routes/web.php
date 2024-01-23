@@ -18,10 +18,6 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Alumni\PageController::class, 'index'])
     ->name('homepage');
-    // Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register_proses'])
-    // ->name('register_proses');
-    // Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])
-    // ->name('register');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('profile', [App\Http\Controllers\Alumni\ProfileController::class, 'index'])
@@ -35,6 +31,10 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware('operator')->name('Operator.')->prefix('operator')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Operator\PageController::class, 'index'])
             ->name('dashboard');
+        Route::put('/status{Iddata}', [App\Http\Controllers\Operator\PageController::class, 'status'])
+            ->name('ganti-status');
+        Route::delete('/hapus-data{IdData}', [App\Http\Controllers\Operator\PageController::class, 'destroy'])
+            ->name('destroy-data');
     });
 
 
