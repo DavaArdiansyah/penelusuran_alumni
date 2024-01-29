@@ -40,38 +40,13 @@
                             <td>{{ $dt->user->name }}</td>
                             <td>{{ $dt->tahun_lulus }}</td>
                             <td>{{ $dt->jurusan->jurusan }}</td>
-                            <td><a href="https://www.instagram.com/{{ $dt->sosial_media }}">{{ $dt->sosial_media }}</a></td>
+                            <td><a href="https://www.instagram.com/{{ $dt->sosial_media }}"><i
+                                        class="fa fa-instagram m-1"></i>{{ $dt->sosial_media }}</a></td>
                             <td>
-                                <div class="dropdown">
-                                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-                                        href="#" role="button" data-toggle="dropdown">
-                                        <i class="dw dw-more"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a class="dropdown-item" href="#"><i class="dw dw-eye"></i>
-                                            Lihat Detail</a>
-                                    </div>
-                                </div>
+                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i>
+                                    Lihat Detail</a>
                             </td>
                         @endforeach
-                        {{-- <tr>
-                            <td class="table-plus">Gloria F. Mead</td>
-                            <td>25</td>
-                            <td>Sagittarius</td>
-                            <td>2829 Trainer Avenue Peoria, IL 61602 </td>
-                            <td>
-                                <div class="dropdown">
-                                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-                                        href="#" role="button" data-toggle="dropdown">
-                                        <i class="dw dw-more"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a class="dropdown-item" href="#"><i class="dw dw-eye"></i>
-                                            Lihat Detail</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr> --}}
                     </tbody>
                 </table>
             </div>

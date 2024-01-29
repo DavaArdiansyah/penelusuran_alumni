@@ -11,7 +11,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        $data = Detail_alumni::all();
+        $data = Detail_alumni::where('status', 'Diverifikasi')->get();
         return view('alumni.dashboard', compact('data'));
     }
 }

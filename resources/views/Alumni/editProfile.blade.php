@@ -16,7 +16,7 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="nisn" id="nisn"
                                         placeholder="Masukan Nisn Anda"
-                                        value="{{ isset(auth()->user()->detail_alumni->nisn) ? auth()->user()->detail_alumni->nisn : '' }}">
+                                        value="{{ isset(auth()->user()->detail_alumni->nisn) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->nisn : '' }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -24,7 +24,7 @@
                                 <div class="col-sm-9">
                                     <input type="date" class="form-control" name="tanggalLahir" id="tanggalLahir"
                                         placeholder="Masukan Tanggal Lahir"
-                                        value="{{ isset(auth()->user()->detail_alumni->tanggal_lahir) ? auth()->user()->detail_alumni->tanggal_lahir : '' }}">
+                                        value="{{ isset(auth()->user()->detail_alumni->tanggal_lahir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tanggal_lahir : '' }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -32,12 +32,12 @@
                                 <div class="col-sm-9">
                                     <select name="jenisKelamin" id="jenisKelamin" class="form-control">
                                         <option disabled hidden selected>Jenis Kelamin</option>
-                                        <option value="Laki laki"
-                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) ? (auth()->user()->detail_alumni->jenis_kelamin == 'Laki laki' ? 'selected' : '') : '' }}>
+                                        <option value="Laki Laki"
+                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? (auth()->user()->detail_alumni->jenis_kelamin == 'Laki Laki' ? 'selected' : '') : '' }}>
                                             Laki laki
                                         </option>
                                         <option value="Perempuan"
-                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) ? (auth()->user()->detail_alumni->jenis_kelamin == 'Perempuan' ? 'selected' : '') : '' }}>
+                                            {{ isset(auth()->user()->detail_alumni->jenis_kelamin) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? (auth()->user()->detail_alumni->jenis_kelamin == 'Perempuan' ? 'selected' : '') : '' }}>
                                             Perempuan
                                         </option>
                                     </select>
@@ -46,7 +46,7 @@
                             <div class="form-group row">
                                 <label for="InputAlamat" class="col-sm-2 col-form-label">Alamat</label>
                                 <div class="col-sm-9">
-                                    <textarea name="alamat" id="alamat" cols="50" rows="2" placeholder="Masukan Alamat">{{ isset(auth()->user()->detail_alumni->alamat) ? auth()->user()->detail_alumni->alamat : '' }}</textarea>
+                                    <textarea name="alamat" id="alamat" cols="50" rows="2" placeholder="Masukan Alamat">{{ isset(auth()->user()->detail_alumni->alamat) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->alamat : '' }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -54,7 +54,7 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="sosialMedia" id="sosialMedia"
                                         placeholder="Masukan Sosial Media"
-                                        value="{{ isset(auth()->user()->detail_alumni->sosial_media) ? auth()->user()->detail_alumni->sosial_media : '' }}">
+                                        value="{{ isset(auth()->user()->detail_alumni->sosial_media) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->sosial_media : '' }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -62,7 +62,7 @@
                                 <div class="col-sm-9">
                                     <select name="idJurusan" id="idJurusan" class="form-control">
                                         <option disabled hidden selected>
-                                            {{ !isset(auth()->user()->detail_alumni->id_jurusan) ? 'Jurusan' : '' }}
+                                            {{ !isset(auth()->user()->detail_alumni->id_jurusan) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? 'Jurusan' : '' }}
                                         </option>
                                         @foreach ($jurusan as $jrsn)
                                             <option value="{{ $jrsn->id }}"
@@ -77,7 +77,7 @@
                                 <div class="col-sm-9">
                                     <input type="string" class="form-control" name="tahunLulus"
                                         id="tahunLulus"placeholder="Masukan Tahun Lulus"
-                                        value="{{ isset(auth()->user()->detail_alumni->tahun_lulus) ? auth()->user()->detail_alumni->tahun_lulus : '' }}">
+                                        value="{{ isset(auth()->user()->detail_alumni->tahun_lulus) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tahun_lulus : '' }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -85,7 +85,7 @@
                                 <div class="col-sm-9">
                                     <input type="string" class="form-control" name="noIjazah"
                                         id="noIjazah"placeholder="Masukan No Ijazah"
-                                        value="{{ isset(auth()->user()->detail_alumni->no_ijazah) ? auth()->user()->detail_alumni->no_ijazah : '' }}">
+                                        value="{{ isset(auth()->user()->detail_alumni->no_ijazah) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->no_ijazah : '' }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -94,7 +94,7 @@
                                 <div class="col-sm-9">
                                     <select name="idJenjangKarir" id="idJenjangKarir" class="form-control">
                                         <option disabled hidden selected>
-                                            {{ !isset(auth()->user()->detail_alumni->id_jenjang_karir) ? 'Jurusan' : '' }}
+                                            {{ !isset(auth()->user()->detail_alumni->id_jenjang_karir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? 'Jenjang Karir' : '' }}
                                         </option>
                                         @foreach ($jenjang_karir as $jnjgkr)
                                             <option value="{{ $jnjgkr->id }}"
@@ -107,7 +107,7 @@
                             <div class="form-group row">
                                 <label for="foto">Foto:</label>
                                 <input type="file" name="foto" id="foto" class="form-control">
-                                @if (isset(auth()->user()->detail_alumni))
+                                @if (isset(auth()->user()->detail_alumni) && auth()->user()->detail_alumni->status == 'Diverifikasi')
                                     <label>File Sebelumnya:</label><br>
                                     <img src="{{ asset('storage/assets/foto/' . (isset(auth()->user()->detail_alumni->foto) ? auth()->user()->detail_alumni->foto : 'Anda belum menambahkan untuk kolom ini')) }}"
                                         alt="foto" width="150">
