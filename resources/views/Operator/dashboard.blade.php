@@ -57,7 +57,156 @@
                                             <button type="submit" class="btn btn-danger"
                                                 style="margin-right: 5px;">Reject</button>
                                         </form>
-                                        <a href="{{ route('Operator.dashboard') }}" class="btn btn-warning">Detail</a>
+                                        <a href="#" class=" btn btn-warning" data-toggle="modal"
+                                            data-target="#Medium-modal" type="submit">Detail
+                                        </a>
+                                        <div class="modal fade" id="Medium-modal" tabindex="-1" role="dialog"
+                                            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myLargeModalLabel">Detail Data</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="profile-edit-list row">
+                                                            <li class="weight-500 col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Full Name</label>
+                                                                    <p>{{ $dt->user->name }}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Jenis Kelamin</label>
+                                                                    <p>{{ $dt->jenis_kelamin }}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Tanggal Lahir</label>
+                                                                    <p>{{ $dt->tanggal_lahir }}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Sosial Media</label> <br>
+                                                                    <a
+                                                                        href="https://www.instagram.com/{{ $dt->sosial_media }}"><i
+                                                                            class="fa fa-instagram m-1"></i>{{ $dt->sosial_media }}</a>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Alamat</label>
+                                                                    <p>{{ $dt->alamat }}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Jenjang Karir</label>
+                                                                    <p>{{ $dt->jenjang_karir->jenjang_karir }}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>State/Province/Region</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Postal Code</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Phone Number</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Address</label>
+                                                                    <textarea class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Visa Card Number</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Paypal ID</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="custom-control custom-checkbox mb-5">
+                                                                        <input type="checkbox" class="custom-control-input"
+                                                                            id="customCheck1-1">
+                                                                        <label class="custom-control-label weight-400"
+                                                                            for="customCheck1-1">I agree to receive
+                                                                            notification
+                                                                            emails</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group mb-0">
+                                                                    <input type="submit" class="btn btn-primary"
+                                                                        value="Update Information">
+                                                                </div>
+                                                            </li>
+                                                            <li class="weight-500 col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Jurusan</label>
+                                                                    <p>{{ $dt->jurusan->jurusan }}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Tahun Lulus</label>
+                                                                    <p>{{ $dt->tahun_lulus }}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Linkedin URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Instagram URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Dribbble URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Dropbox URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Google-plus URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Pinterest URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Skype URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Vine URL:</label>
+                                                                    <input class="form-control form-control-lg"
+                                                                        type="text" placeholder="Paste your link here">
+                                                                </div>
+                                                                <div class="form-group mb-0">
+                                                                    <input type="submit" class="btn btn-primary"
+                                                                        value="Save & Update">
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save
+                                                            changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>

@@ -1,97 +1,618 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
-    <div class="content-wrapper">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>Profile</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-md grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">Data Profile</h4>
-                        <div class="form-group row justify-content-center">
-                            <img src="{{ isset(auth()->user()->detail_alumni->foto) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? asset('storage/assets/foto/' . auth()->user()->detail_alumni->foto) : '' }}"
-                                alt="{{ auth()->user()->name }}" class="w-25">
-                        </div>
-                        <div class="form-group row">
-                            <label for="Nisn" class="col-sm-2 col-form-label">Nisn</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="Nisn">{{ isset(auth()->user()->detail_alumni->nisn) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->nisn : 'Anda belum menambahkan untuk kolom ini' }}</label>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
+                <div class="pd-20 card-box height-100-p">
+                    <div class="profile-photo">
+                        <a href="modal" data-toggle="modal" data-target="#modal" class="edit-avatar"><i
+                                class="fa fa-pencil"></i></a>
+                        <img src="{{ isset(auth()->user()->detail_alumni->foto) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? asset('storage/assets/foto/' . auth()->user()->detail_alumni->foto) : '' }}"
+                            alt="" class="avatar-photo">
+                        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body pd-5">
+                                        <div class="img-container">
+                                            <img id="image" src="{{ asset('assets/admin') }}/vendors/images/photo2.jpg"
+                                                alt="Picture">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" value="Update" class="btn btn-primary">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="Nama" class="col-sm-2 col-form-label">Nama</label>
-                            <div class="col-sm-9">
-                                <label for="Nama">{{ auth()->user()->name }} </label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="noTelp" class="col-sm-2 col-form-label">No Telepon</label>
-                            <div class="col-sm-9">
-                                <label for="noTelp">{{ auth()->user()->no_telp }}</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputTanggalLahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="tanggalLahir">{{ isset(auth()->user()->detail_alumni->tanggal_lahir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tanggal_lahir : 'Anda belum menambahkan untuk kolom ini' }}</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputJenisKelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="jenisKelamin">{{ isset(auth()->user()->detail_alumni->jenis_kelamin) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jenis_kelamin : 'Anda belum menambahkan untuk kolom ini' }}</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputAlamat" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="alamat">{{ isset(auth()->user()->detail_alumni->alamat) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->alamat : 'Anda belum menambahkan untuk kolom ini' }}</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputSosialMedia" class="col-sm-2 col-form-label">Sosial Media</label>
-                            <div class="col-sm-9">
+                    </div>
+                    <h5 class="text-center h5 mb-0">{{ auth()->user()->name }}</h5>
+                    <p class="text-center text-muted font-14">
+                        {{ auth()->user()->email }}
+                    </p>
+                    <div class="profile-info">
+                        <h5 class="mb-20 h5 text-blue">Contact Information</h5>
+                        <ul>
+                            <li>
+                                <span>jurusan:</span>
+                                {{ auth()->user()->email }}
+                            </li>
+                            <li>
+                                <span>Phone Number:</span>
+                                {{ auth()->user()->no_telp }}
+                            </li>
+                            <li>
+                                <span>Address:</span>
+                                {{ isset(auth()->user()->detail_alumni->alamat) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->alamat : 'Anda belum menambahkan untuk kolom ini' }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile-social">
+                        <h5 class="mb-20 h5 text-blue">Social Links</h5>
+                        <ul class="clearfix">
+                            <li>
                                 @if (isset(auth()->user()->detail_alumni->sosial_media) && auth()->user()->detail_alumni->status == 'Diverifikasi')
-                                    <a
-                                        href="https://www.instagram.com/{{ isset(auth()->user()->detail_alumni->sosial_media) ? auth()->user()->detail_alumni->sosial_media : '' }}">{{ auth()->user()->detail_alumni->sosial_media }}</a>
                                 @else
-                                    <label for="sosialMedia">Anda belum menambahkan untuk kolom ini</label>
                                 @endif
+                                <a href="https://www.instagram.com/{{ isset(auth()->user()->detail_alumni->sosial_media) ? auth()->user()->detail_alumni->sosial_media : '' }}"
+                                    class="btn" data-bgcolor="#f46f30" data-color="#ffffff"><i
+                                        class="fa fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
+                <div class="card-box height-100-p overflow-hidden">
+                    <div class="profile-tab height-100-p">
+                        <div class="tab height-100-p">
+                            <ul class="nav nav-tabs customtab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">Lainnya</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tasks" role="tab">Tasks</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#setting" role="tab">Settings</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <!-- Timeline Tab start -->
+                                {{-- <div class="tab-pane fade show active" id="timeline" role="tabpanel">
+                                    <div class="pd-20">
+                                        <div class="profile-timeline">
+                                            <div class="timeline-month">
+                                                <h5>August, 2020</h5>
+                                            </div>
+                                            <div class="profile-timeline-list">
+                                                <ul>
+                                                    <li>
+                                                        <div class="date">12 Aug</div>
+                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
+                                                            Task Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 Aug</div>
+                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
+                                                            Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 Aug</div>
+                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
+                                                        </div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 Aug</div>
+                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
+                                                        </div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="timeline-month">
+                                                <h5>July, 2020</h5>
+                                            </div>
+                                            <div class="profile-timeline-list">
+                                                <ul>
+                                                    <li>
+                                                        <div class="date">12 July</div>
+                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
+                                                            Task Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 July</div>
+                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
+                                                            Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="timeline-month">
+                                                <h5>June, 2020</h5>
+                                            </div>
+                                            <div class="profile-timeline-list">
+                                                <ul>
+                                                    <li>
+                                                        <div class="date">12 June</div>
+                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
+                                                            Task Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 June</div>
+                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
+                                                            Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 June</div>
+                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
+                                                        </div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <!-- Timeline Tab End -->
+                                <!-- Tasks Tab start -->
+                                <div class="tab-pane fade" id="tasks" role="tabpanel">
+                                    <div class="pd-20 profile-task-wrap">
+                                        <div class="container pd-0">
+                                            <!-- Open Task start -->
+                                            <div class="task-title row align-items-center">
+                                                <div class="col-md-8 col-sm-12">
+                                                    <h5>Open Tasks (4 Left)</h5>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 text-right">
+                                                    <a href="task-add" data-toggle="modal" data-target="#task-add"
+                                                        class="bg-light-blue btn text-blue weight-500"><i
+                                                            class="ion-plus-round"></i> Add</a>
+                                                </div>
+                                            </div>
+                                            <div class="profile-task-list pb-30">
+                                                <ul>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-1">
+                                                            <label class="custom-control-label" for="task-1"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id ea
+                                                        earum.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2019</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-2">
+                                                            <label class="custom-control-label" for="task-2"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2019</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-3">
+                                                            <label class="custom-control-label" for="task-3"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2019</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-4">
+                                                            <label class="custom-control-label" for="task-4"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet. Id ea earum.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2019</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- Open Task End -->
+                                            <!-- Close Task start -->
+                                            <div class="task-title row align-items-center">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h5>Closed Tasks</h5>
+                                                </div>
+                                            </div>
+                                            <div class="profile-task-list close-tasks">
+                                                <ul>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-close-1" checked="" disabled="">
+                                                            <label class="custom-control-label"
+                                                                for="task-close-1"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id ea
+                                                        earum.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2018</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-close-2" checked="" disabled="">
+                                                            <label class="custom-control-label"
+                                                                for="task-close-2"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2018</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-close-3" checked="" disabled="">
+                                                            <label class="custom-control-label"
+                                                                for="task-close-3"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2018</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="task-close-4" checked="" disabled="">
+                                                            <label class="custom-control-label"
+                                                                for="task-close-4"></label>
+                                                        </div>
+                                                        <div class="task-type">Email</div>
+                                                        Lorem ipsum dolor sit amet. Id ea earum.
+                                                        <div class="task-assign">Assigned to Ferdinand M. <div
+                                                                class="due-date">due date <span>22 February 2018</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- Close Task start -->
+                                            <!-- add task popup start -->
+                                            <div class="modal fade customscroll" id="task-add" tabindex="-1"
+                                                role="dialog">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Tasks Add
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close" data-toggle="tooltip"
+                                                                data-placement="bottom" title=""
+                                                                data-original-title="Close Modal">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body pd-0">
+                                                            <div class="task-list-form">
+                                                                <ul>
+                                                                    <li>
+                                                                        <form>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-md-4">Task Type</label>
+                                                                                <div class="col-md-8">
+                                                                                    <input type="text"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-md-4">Task
+                                                                                    Message</label>
+                                                                                <div class="col-md-8">
+                                                                                    <textarea class="form-control"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-md-4">Assigned to</label>
+                                                                                <div class="col-md-8">
+                                                                                    <select
+                                                                                        class="selectpicker form-control"
+                                                                                        data-style="btn-outline-primary"
+                                                                                        title="Not Chosen" multiple=""
+                                                                                        data-selected-text-format="count"
+                                                                                        data-count-selected-text= "{0} people selected">
+                                                                                        <option>Ferdinand M.</option>
+                                                                                        <option>Don H. Rabon</option>
+                                                                                        <option>Ann P. Harris</option>
+                                                                                        <option>Katie D. Verdin</option>
+                                                                                        <option>Christopher S. Fulghum
+                                                                                        </option>
+                                                                                        <option>Matthew C. Porter</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row mb-0">
+                                                                                <label class="col-md-4">Due Date</label>
+                                                                                <div class="col-md-8">
+                                                                                    <input type="text"
+                                                                                        class="form-control date-picker">
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="javascript:;" class="remove-task"
+                                                                            data-toggle="tooltip" data-placement="bottom"
+                                                                            title=""
+                                                                            data-original-title="Remove Task"><i
+                                                                                class="ion-minus-circled"></i></a>
+                                                                        <form>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-md-4">Task Type</label>
+                                                                                <div class="col-md-8">
+                                                                                    <input type="text"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-md-4">Task
+                                                                                    Message</label>
+                                                                                <div class="col-md-8">
+                                                                                    <textarea class="form-control"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-md-4">Assigned to</label>
+                                                                                <div class="col-md-8">
+                                                                                    <select
+                                                                                        class="selectpicker form-control"
+                                                                                        data-style="btn-outline-primary"
+                                                                                        title="Not Chosen" multiple=""
+                                                                                        data-selected-text-format="count"
+                                                                                        data-count-selected-text= "{0} people selected">
+                                                                                        <option>Ferdinand M.</option>
+                                                                                        <option>Don H. Rabon</option>
+                                                                                        <option>Ann P. Harris</option>
+                                                                                        <option>Katie D. Verdin</option>
+                                                                                        <option>Christopher S. Fulghum
+                                                                                        </option>
+                                                                                        <option>Matthew C. Porter</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row mb-0">
+                                                                                <label class="col-md-4">Due Date</label>
+                                                                                <div class="col-md-8">
+                                                                                    <input type="text"
+                                                                                        class="form-control date-picker">
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="add-more-task">
+                                                                <a href="#" data-toggle="tooltip"
+                                                                    data-placement="bottom" title=""
+                                                                    data-original-title="Add Task"><i
+                                                                        class="ion-plus-circled"></i> Add More Task</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary">Add</button>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- add task popup End -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tasks Tab End -->
+                                <!-- Setting Tab start -->
+                                <div class="tab-pane fade tab-pane fade show active" id="setting" role="tabpanel">
+                                    <div class="profile-setting">
+                                        <form>
+                                            <ul class="profile-edit-list row">
+                                                <li class="weight-500 col-md-6">
+                                                    <h4 class="text-blue h5 mb-20">Edit Your Personal Setting</h4>
+                                                    <div class="form-group">
+                                                        <label>Full Name</label>
+                                                        <input class="form-control form-control-lg" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Title</label>
+                                                        <input class="form-control form-control-lg" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email</label>
+                                                        <input class="form-control form-control-lg" type="email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Date of birth</label>
+                                                        <input class="form-control form-control-lg date-picker"
+                                                            type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Gender</label>
+                                                        <div class="d-flex">
+                                                            <div class="custom-control custom-radio mb-5 mr-20">
+                                                                <input type="radio" id="customRadio4"
+                                                                    name="customRadio" class="custom-control-input">
+                                                                <label class="custom-control-label weight-400"
+                                                                    for="customRadio4">Male</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio mb-5">
+                                                                <input type="radio" id="customRadio5"
+                                                                    name="customRadio" class="custom-control-input">
+                                                                <label class="custom-control-label weight-400"
+                                                                    for="customRadio5">Female</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Country</label>
+                                                        <select class="selectpicker form-control form-control-lg"
+                                                            data-style="btn-outline-secondary btn-lg" title="Not Chosen">
+                                                            <option>United States</option>
+                                                            <option>India</option>
+                                                            <option>United Kingdom</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>State/Province/Region</label>
+                                                        <input class="form-control form-control-lg" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Postal Code</label>
+                                                        <input class="form-control form-control-lg" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <input class="form-control form-control-lg" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <textarea class="form-control"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Visa Card Number</label>
+                                                        <input class="form-control form-control-lg" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Paypal ID</label>
+                                                        <input class="form-control form-control-lg" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox mb-5">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="customCheck1-1">
+                                                            <label class="custom-control-label weight-400"
+                                                                for="customCheck1-1">I agree to receive notification
+                                                                emails</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mb-0">
+                                                        <input type="submit" class="btn btn-primary"
+                                                            value="Update Information">
+                                                    </div>
+                                                </li>
+                                                <li class="weight-500 col-md-6">
+                                                    <h4 class="text-blue h5 mb-20">Edit Social Media links</h4>
+                                                    <div class="form-group">
+                                                        <label>Facebook URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Twitter URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Linkedin URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Instagram URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Dribbble URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Dropbox URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Google-plus URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Pinterest URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Skype URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Vine URL:</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            placeholder="Paste your link here">
+                                                    </div>
+                                                    <div class="form-group mb-0">
+                                                        <input type="submit" class="btn btn-primary"
+                                                            value="Save & Update">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Setting Tab End -->
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="exampleInputJurusan" class="col-sm-2 col-form-label">jurusan</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="jurusan">{{ isset(auth()->user()->detail_alumni->jurusan->jurusan) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jurusan->jurusan : 'Anda belum menambahkan untuk kolom ini' }}</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputTahunLulus" class="col-sm-2 col-form-label">Tahun Lulus</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="tahunLulus">{{ isset(auth()->user()->detail_alumni->tahun_lulus) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tahun_lulus : 'Anda belum menambahkan untuk kolom ini' }}</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputNoIjazah" class="col-sm-2 col-form-label">No Ijazah</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="noIjazah">{{ isset(auth()->user()->detail_alumni->no_ijazah) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->no_ijazah : 'Anda belum menambahkan untuk kolom ini' }}</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputJenjangKarir" class="col-sm-2 col-form-label">Jenjang
-                                Karir</label>
-                            <div class="col-sm-9">
-                                <label
-                                    for="jenjangKarir">{{ isset(auth()->user()->detail_alumni->jenjang_karir->jenjang_karir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jenjang_karir->jenjang_karir : 'Anda belum menambahkan untuk kolom ini' }}</label>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary me-2" href="{{ route('profile-edit') }}">Edit Biodata</a>
                     </div>
                 </div>
             </div>
