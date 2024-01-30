@@ -45,22 +45,26 @@
                     </div>
                     <h5 class="text-center h5 mb-0">{{ auth()->user()->name }}</h5>
                     <p class="text-center text-muted font-14">
-                        {{ auth()->user()->email }}
+                        {{ isset(auth()->user()->detail_alumni->jurusan->jurusan) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jurusan->jurusan : 'Anda belum menambahkan untuk kolom ini' }}
                     </p>
                     <div class="profile-info">
                         <h5 class="mb-20 h5 text-blue">Contact Information</h5>
                         <ul>
                             <li>
-                                <span>jurusan:</span>
-                                {{ auth()->user()->email }}
+                                <span>Tahun Lulus: </span>
+                                {{ isset(auth()->user()->detail_alumni->tahun_lulus) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tahun_lulus : 'Anda belum menambahkan untuk kolom ini' }}
                             </li>
                             <li>
-                                <span>Phone Number:</span>
-                                {{ auth()->user()->no_telp }}
+                                <span>Jenis Kelamin: </span>
+                                {{ isset(auth()->user()->detail_alumni->jenis_kelamin) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jenis_kelamin : 'Anda belum menambahkan untuk kolom ini' }}
                             </li>
                             <li>
-                                <span>Address:</span>
-                                {{ isset(auth()->user()->detail_alumni->alamat) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->alamat : 'Anda belum menambahkan untuk kolom ini' }}
+                                <span>Jurusan: </span>
+                                {{ isset(auth()->user()->detail_alumni->jurusan->jurusan) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jurusan->jurusan : 'Anda belum menambahkan untuk kolom ini' }}
+                            </li>
+                            <li>
+                                <span>Jenjang Karir: </span>
+                                {{ isset(auth()->user()->detail_alumni->jenjang_karir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->jenjang_karir->jenjang_karir : 'Anda belum menambahkan untuk kolom ini' }}
                             </li>
                         </ul>
                     </div>
@@ -72,7 +76,7 @@
                                 @else
                                 @endif
                                 <a href="https://www.instagram.com/{{ isset(auth()->user()->detail_alumni->sosial_media) ? auth()->user()->detail_alumni->sosial_media : '' }}"
-                                    class="btn" data-bgcolor="#f46f30" data-color="#ffffff"><i
+                                    class="btn" data-bgcolor="#33186B" data-color="#ffffff"><i
                                         class="fa fa-instagram"></i></a>
                             </li>
                         </ul>
@@ -96,96 +100,46 @@
                             </ul>
                             <div class="tab-content">
                                 <!-- Timeline Tab start -->
-                                {{-- <div class="tab-pane fade show active" id="timeline" role="tabpanel">
-                                    <div class="pd-20">
-                                        <div class="profile-timeline">
-                                            <div class="timeline-month">
-                                                <h5>August, 2020</h5>
-                                            </div>
-                                            <div class="profile-timeline-list">
-                                                <ul>
-                                                    <li>
-                                                        <div class="date">12 Aug</div>
-                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
-                                                            Task Added</div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="date">10 Aug</div>
-                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
-                                                            Added</div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="date">10 Aug</div>
-                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="date">10 Aug</div>
-                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="timeline-month">
-                                                <h5>July, 2020</h5>
-                                            </div>
-                                            <div class="profile-timeline-list">
-                                                <ul>
-                                                    <li>
-                                                        <div class="date">12 July</div>
-                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
-                                                            Task Added</div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="date">10 July</div>
-                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
-                                                            Added</div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="timeline-month">
-                                                <h5>June, 2020</h5>
-                                            </div>
-                                            <div class="profile-timeline-list">
-                                                <ul>
-                                                    <li>
-                                                        <div class="date">12 June</div>
-                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
-                                                            Task Added</div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="date">10 June</div>
-                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
-                                                            Added</div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="date">10 June</div>
-                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                        <div class="task-time">09:30 am</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                <div class="tab-pane fade tab-pane fade show active" id="timeline" role="tabpanel">
+                                    <div class="profile-setting">
+                                        <form>
+                                            <ul class="profile-edit-list row">
+                                                <li class="weight-500 col-md-6">
+                                                    <div class="form-floating">
+                                                        <label>Nama: </label>
+                                                        <p class="border border-secondary p-2 rounded">{{auth()->user()->name}}</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email</label>
+                                                        <p class="border border-secondary p-2 rounded">{{auth()->user()->email}}</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tanggal Lahir: </label>
+                                                        <p class="border border-secondary p-2 rounded">{{isset(auth()->user()->detail_alumni->tanggal_lahir) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->tanggal_lahir : 'Anda belum menambahkan untuk kolom ini'}}</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>No Telepon: </label>
+                                                        <p class="border border-secondary p-2 rounded">{{auth()->user()->no_telp}}</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Alamat: </label>
+                                                        <p class="border border-secondary p-2 rounded">{{isset(auth()->user()->detail_alumni->alamat) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->alamat : 'Anda belum menambahkan untuk kolom ini'}}</p>
+                                                    </div>
+                                                </li>
+                                                <li class="weight-500 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Nisn: </label>
+                                                        <p class="border border-secondary p-2 rounded">{{isset(auth()->user()->detail_alumni->nisn) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->nisn : 'Anda belum menambahkan untuk kolom ini'}}</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>No Ijazah: </label>
+                                                        <p class="border border-secondary p-2 rounded">{{isset(auth()->user()->detail_alumni->no_ijazah) && auth()->user()->detail_alumni->status == 'Diverifikasi' ? auth()->user()->detail_alumni->no_ijazah : 'Anda belum menambahkan untuk kolom ini'}}</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </form>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <!-- Timeline Tab End -->
                                 <!-- Tasks Tab start -->
                                 <div class="tab-pane fade" id="tasks" role="tabpanel">
@@ -462,152 +416,94 @@
                                 </div>
                                 <!-- Tasks Tab End -->
                                 <!-- Setting Tab start -->
-                                <div class="tab-pane fade tab-pane fade show active" id="setting" role="tabpanel">
-                                    <div class="profile-setting">
-                                        <form>
-                                            <ul class="profile-edit-list row">
-                                                <li class="weight-500 col-md-6">
-                                                    <h4 class="text-blue h5 mb-20">Edit Your Personal Setting</h4>
-                                                    <div class="form-group">
-                                                        <label>Full Name</label>
-                                                        <input class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Title</label>
-                                                        <input class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <input class="form-control form-control-lg" type="email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Date of birth</label>
-                                                        <input class="form-control form-control-lg date-picker"
-                                                            type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Gender</label>
-                                                        <div class="d-flex">
-                                                            <div class="custom-control custom-radio mb-5 mr-20">
-                                                                <input type="radio" id="customRadio4"
-                                                                    name="customRadio" class="custom-control-input">
-                                                                <label class="custom-control-label weight-400"
-                                                                    for="customRadio4">Male</label>
-                                                            </div>
-                                                            <div class="custom-control custom-radio mb-5">
-                                                                <input type="radio" id="customRadio5"
-                                                                    name="customRadio" class="custom-control-input">
-                                                                <label class="custom-control-label weight-400"
-                                                                    for="customRadio5">Female</label>
-                                                            </div>
+                                <div class="tab-pane fade" id="setting" role="tabpanel">
+                                    <div class="pd-20">
+                                        <div class="profile-timeline">
+                                            <div class="timeline-month">
+                                                <h5>August, 2020</h5>
+                                            </div>
+                                            <div class="profile-timeline-list">
+                                                <ul>
+                                                    <li>
+                                                        <div class="date">12 Aug</div>
+                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
+                                                            Task Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 Aug</div>
+                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
+                                                            Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 Aug</div>
+                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Country</label>
-                                                        <select class="selectpicker form-control form-control-lg"
-                                                            data-style="btn-outline-secondary btn-lg" title="Not Chosen">
-                                                            <option>United States</option>
-                                                            <option>India</option>
-                                                            <option>United Kingdom</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>State/Province/Region</label>
-                                                        <input class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Postal Code</label>
-                                                        <input class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Phone Number</label>
-                                                        <input class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <textarea class="form-control"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Visa Card Number</label>
-                                                        <input class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Paypal ID</label>
-                                                        <input class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="custom-control custom-checkbox mb-5">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                id="customCheck1-1">
-                                                            <label class="custom-control-label weight-400"
-                                                                for="customCheck1-1">I agree to receive notification
-                                                                emails</label>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 Aug</div>
+                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group mb-0">
-                                                        <input type="submit" class="btn btn-primary"
-                                                            value="Update Information">
-                                                    </div>
-                                                </li>
-                                                <li class="weight-500 col-md-6">
-                                                    <h4 class="text-blue h5 mb-20">Edit Social Media links</h4>
-                                                    <div class="form-group">
-                                                        <label>Facebook URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Twitter URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Linkedin URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Instagram URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Dribbble URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Dropbox URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Google-plus URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Pinterest URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Skype URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Vine URL:</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            placeholder="Paste your link here">
-                                                    </div>
-                                                    <div class="form-group mb-0">
-                                                        <input type="submit" class="btn btn-primary"
-                                                            value="Save & Update">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </form>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="timeline-month">
+                                                <h5>July, 2020</h5>
+                                            </div>
+                                            <div class="profile-timeline-list">
+                                                <ul>
+                                                    <li>
+                                                        <div class="date">12 July</div>
+                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
+                                                            Task Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 July</div>
+                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
+                                                            Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="timeline-month">
+                                                <h5>June, 2020</h5>
+                                            </div>
+                                            <div class="profile-timeline-list">
+                                                <ul>
+                                                    <li>
+                                                        <div class="date">12 June</div>
+                                                        <div class="task-name"><i class="ion-android-alarm-clock"></i>
+                                                            Task Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 June</div>
+                                                        <div class="task-name"><i class="ion-ios-chatboxes"></i> Task
+                                                            Added</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="date">10 June</div>
+                                                        <div class="task-name"><i class="ion-ios-clock"></i> Event Added
+                                                        </div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <div class="task-time">09:30 am</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- Setting Tab End -->
