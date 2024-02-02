@@ -41,20 +41,16 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $input = $request->all();
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
-            if(auth()->user()->id_role == 3){
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+            if (auth()->user()->role == 'admin') {
                 return redirect()->route('Admin.dashboard');
-            } else if(auth()->user()->id_role == 2){    
+            } else if (auth()->user()->role == 'operator') {
                 return redirect()->route('Operator.dashboard');
-            // }
-            // else if(auth()->user()->id_role == 3){
-            //     return redirect()->route('Alumni.dashboard');
-            } else{
+            } else {
                 return redirect()->route('homepage');
             }
-        }else {
-            return redirect()->route('login')->with('error','Email Address And Password Are Wrong');
+        } else {
+            return redirect()->route('login')->with('error', 'Email Address And Password Are Wrong');
         }
     }
 }

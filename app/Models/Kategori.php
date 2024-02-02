@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jenjang_karir extends Model
+class Kategori extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'jenjang_karir'
+        'kategori'
     ];
 
-    public function detail_alumni()
-    {
-        return $this->hasmany(Detail_alumni::class, 'id_jenjang_karir', 'id');
+    public function berita(){
+        return $this->hasMany(Berita::class, 'id_kategoris');
     }
 }

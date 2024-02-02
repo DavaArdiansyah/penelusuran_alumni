@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('raw_data_alumni', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['admin, operator, alumni'])->nullable();
-            $table->rememberToken();
+            $table->integer('nisn');
+            $table->string('nama_lengkap');
+            $table->enum('program_keahlian', ['RPL, DKV, TKJ, MLOG, MP, AK, BR']);
+            $table->year('tahun_lulus');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('raw_data_alumni');
     }
 };

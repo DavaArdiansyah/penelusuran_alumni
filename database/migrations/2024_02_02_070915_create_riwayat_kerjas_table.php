@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('riwayat_kerja', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['admin, operator, alumni'])->nullable();
-            $table->rememberToken();
+            $table->unsignedBigInteger('id_data_alumnis');
+            $table->string('nama_perusahaan');
+            $table->text('alamat_pekerjaan');
+            $table->string('jabatan');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('id_data_alumnis')->references('id')->on('data_alumni');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('riwayat_kerja');
     }
 };

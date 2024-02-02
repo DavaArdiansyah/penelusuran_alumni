@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jenjang_karirs', function (Blueprint $table) {
+        Schema::create('riwayat_pendidikan', function (Blueprint $table) {
             $table->id();
-            $table->string('jenjang_karir');
+            $table->unsignedBigInteger('id_data_alumnis');
+            $table->text('jenjang_pendidikan');
+            $table->text('pengalaman_organisasi');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('id_data_alumnis')->references('id')->on('data_alumni');
         });
     }
 
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jenjang_karirs');
+        Schema::dropIfExists('riwayat_pendidikan');
     }
 };

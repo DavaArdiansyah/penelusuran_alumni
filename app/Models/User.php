@@ -18,10 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
-        'no_telp',
     ];
 
     /**
@@ -44,13 +42,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function role()
+    public function data_alumni()
     {
-        return $this->belongsTo(Role::class, 'id_role', 'id');
-    }
-
-    public function detail_alumni()
-    {
-        return $this->hasOne(Detail_alumni::class, 'id_user', 'id');
+        $this->hasOne(DataAlumni::class, 'id_users');
     }
 }
