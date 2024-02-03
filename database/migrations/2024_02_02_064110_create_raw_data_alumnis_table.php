@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('raw_data_alumni', function (Blueprint $table) {
             $table->id();
-            $table->integer('nisn');
+            $table->integer('nisn')->unique();
             $table->string('nama_lengkap');
             $table->enum('program_keahlian', ['RPL, DKV, TKJ, MLOG, MP, AK, BR']);
             $table->year('tahun_lulus');
