@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_data_alumnis');
             $table->text('jenjang_pendidikan');
+            $table->year('tahun_lulus');
             $table->text('pengalaman_organisasi');
             $table->timestamps();
             $table->softDeletes();
