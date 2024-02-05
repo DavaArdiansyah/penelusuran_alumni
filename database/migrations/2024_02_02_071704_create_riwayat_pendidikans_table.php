@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('riwayat_pendidikan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_data_alumnis');
-            $table->text('jenjang_pendidikan');
+            $table->string('jenjang_pendidikan');
             $table->year('tahun_lulus');
             $table->text('pengalaman_organisasi');
             $table->timestamps();
